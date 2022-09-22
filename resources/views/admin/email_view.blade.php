@@ -34,37 +34,33 @@
                 <form action="{{url('upload_doctor')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div style="padding:15px;">
-                        <label for="">Doctor Name</label>
-                        <input type="text" style="color:black;" name="name" placeholder="Write Doctor's Name" required="">
+                        <label for="">Greeting</label>
+                        <input type="text" style="color:black;" name="greeting" placeholder="Write Doctor's Name" required="">
         
                     </div>
                     <div style="padding:15px;">
-                        <label for="">Phone</label>
-                        <input type="Number" style="color:black;" name="number" placeholder="Write Doctor's Number" required="">
+                        <label for="">Body</label>
+                        <input type="text" style="color:black;" name="body" required="">
+        
+                    </div>
+                    
+                    <div style="padding:15px;">
+                        <label for="">Action text</label>
+                        <input type="text" style="color:black;" name="actiontext" placeholder="Write Doctor's Room Number" required="">
         
                     </div>
                     <div style="padding:15px;">
-                        <label for="">Doctor Speciality</label>
-                        <select name="speciality" style="color:black; width:200px;" required="">
-                            <option value="">--Select--</option>
-                            <option value="Heart">Heart</option>
-                            <option value="Optician">Optician</option>
-                            <option value="Oncologist">Oncologist</option>
-                            <option value="Dentist">Dentist</option>
-                        </select>        
-                    </div>
-                    <div style="padding:15px;">
-                        <label for="">Doctor Room Number</label>
-                        <input type="text" style="color:black;" name="room" placeholder="Write Doctor's Room Number" required="">
+                        <label for="">Action url</label>
+                        <input type="text" style="color:black;" name="actionurl" placeholder="Write Doctor's Room Number" required="">
         
                     </div>
                     <div style="padding:15px;">
-                        <label for="">Doctor image</label>
-                        <input type="file"  name="file" required="">
+                        <label for="">End part</label>
+                        <input type="text" style="color:black;" name="endpart" placeholder="Write Doctor's Room Number" required="">
         
                     </div>
                     <div style="padding:15px;">                     
-    
+                    
                         <input type="submit" class="btn btn-success">
         
                     </div>

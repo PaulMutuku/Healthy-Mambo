@@ -26,7 +26,7 @@
                         <th style="padding:10px">Status</th>
                         <th style="padding:10px">Approved</th>
                         <th style="padding:10px">Canceled</th>
-                        <th style="padding:10px">Send mail</th>
+                        <th style="padding:10px">Send Mail</th>
                     </tr>
                     @foreach($data as $appoint)
                     <tr align="center" >
