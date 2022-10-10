@@ -50,7 +50,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
       <div class="container">
-        <a class="navbar-brand" href="#"><span class="text-primary">Healthy</span>-Mambo</a>
+        <a class="navbar-brand" href="{{url('/')}}"><span class="text-primary">Healthy</span>-Mambo</a>
 
         <form action="#">
           <div class="input-group input-navbar">
@@ -129,7 +129,7 @@
       <div class="container text-center wow zoomIn">
         <span class="subhead">Let's make your life happier</span>
         <h1 class="display-4">Healthy Living</h1>
-        <a href="#" class="btn btn-primary">Let's Consult</a>
+        <a href="{{url('consult')}}" class="btn btn-primary">Let's Consult</a>
       </div>
     </div>
   </div>

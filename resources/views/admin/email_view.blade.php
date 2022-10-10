@@ -31,11 +31,11 @@
                 {{session()->get('message')}}
             </div>
             @endif
-                <form action="{{url('upload_doctor')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{url('sendemail',$data->id)}}" method="POST">
                     @csrf
                     <div style="padding:15px;">
                         <label for="">Greeting</label>
-                        <input type="text" style="color:black;" name="greeting" placeholder="Write Doctor's Name" required="">
+                        <input type="text" style="color:black;" name="greeting" required="">
         
                     </div>
                     <div style="padding:15px;">
@@ -46,17 +46,17 @@
                     
                     <div style="padding:15px;">
                         <label for="">Action text</label>
-                        <input type="text" style="color:black;" name="actiontext" placeholder="Write Doctor's Room Number" required="">
+                        <input type="text" style="color:black;" name="actiontext" required="">
         
                     </div>
                     <div style="padding:15px;">
                         <label for="">Action url</label>
-                        <input type="text" style="color:black;" name="actionurl" placeholder="Write Doctor's Room Number" required="">
+                        <input type="text" style="color:black;" name="actionurl" required="">
         
                     </div>
                     <div style="padding:15px;">
                         <label for="">End part</label>
-                        <input type="text" style="color:black;" name="endpart" placeholder="Write Doctor's Room Number" required="">
+                        <input type="text" style="color:black;" name="endpart"  required="">
         
                     </div>
                     <div style="padding:15px;">                     

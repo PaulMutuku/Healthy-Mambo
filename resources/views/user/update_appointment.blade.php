@@ -19,6 +19,13 @@
   <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
 
   <link rel="stylesheet" href="../assets/css/theme.css">
+  <style>
+        label
+        {
+            display: inline-block;
+            width: 200px;
+        }
+    </style>
 </head>
 <body>
 
@@ -50,7 +57,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
       <div class="container">
-        <a class="navbar-brand" href="#"><span class="text-primary">Healthy</span>-Mambo</a>
+        <a class="navbar-brand" href="{{url('/')}}"><span class="text-primary">Healthy</span>-Mambo</a>
 
         <form action="#">
           <div class="input-group input-navbar">
@@ -68,7 +75,7 @@
         <div class="collapse navbar-collapse" id="navbarSupport">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link" href="{{url('/')}}">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="about.html">About Us</a>
@@ -87,9 +94,7 @@
 
             @auth
 
-            <li class="nav-item">
-              <a class="nav-link" style="background-color: cyan; color: white" href="{{url('myappointment')}}">My Appointments</a>
-            </li>
+            
             <x-app-layout>
     
             </x-app-layout>
@@ -114,40 +119,62 @@
       </div> <!-- .container -->
     </nav>
   </header>
+            <div class="container-fluid page-body-wrapper">
+                
+                <div class="container" align="center" style="padding:100px">
+                    @if(session()->has('message'))
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert">
+                            x
+                        </button>
+                        {{session()->get('message')}}
+                    </div>
+                    @endif
+                    <form action="{{url('editappointment',$data->id)}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div style="padding:15px;">
+                            <label for=""> Name</label>
+                            <input type="text" style="color:black" name="name" value="{{$data->name}}">
+                            
+                        </div>
+                        <div style="padding:15px;">
+                            <label for="">email</label>
+                            <input type="text" style="color:black" name="email" value="{{$data->email}}">
+                        </div>
+                        <div style="padding:15px;">
+                            <label for="">Phone</label>
+                            <input type="number" style="color:black" name="phone" value="{{$data->Phone}}">
+                        </div>
+                        
+                        <div style="padding:15px;">
+                            <label for="">date</label>
+                            <input type="date" name="date" class="col-12 col-sm-6 py-2 wow fadeInRight">
+                        </div>
+                        <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
+                          <label for="">Doctor's Name</label>
+                            <select name="doctor" id="departement" class="custom-select">
+                            <option value="">-- select doctor --</option>
+                            @foreach($data as $doctors)
+                              <option value="{{$doctors->name}}">{{$doctors->name}} --speciality-- {{$doctors->speciality}}</option>
+                            @endforeach                        
+                        </div>
+                        
+                        <div style="padding:15px; margin-top:10px;" class="col-12 col-sm-6 py-2 wow fadeInRight">
+                            <label>Message</label>
+                            <textarea name="message" id="message" class="form-control" rows="6" placeholder="Enter message.."></textarea>
+                        </div>
+                        <div style="padding:15px;">
+                            <input type="submit" class="btn btn-success">
+                        </div>
 
-  <div align="center" style="padding: 70px;"> 
-    <table>
-        <tr style="background-color:#878693;">
-            <th style="padding:10px; color: white; font-size :20px;">Doctor Name</th>
-            <th style="padding:10px; color: white; font-size :20px;">Date</th>
-            <th style="padding:10px; color: white; font-size :20px;">Message</th>
-            <th style="padding:10px; color: white; font-size :20px;">Status</th>
-            <th style="padding:10px; color: white; font-size :20px;">Cancel Appointment</th>
-            <th style="padding:10px; color: white; font-size :20px;">Update Appointment</th>
-        </tr>
-
-        @foreach($appoint as $appoints)  
-            <tr style="background-color:#c9c7d5" align="center"> 
-                <td style="padding:10px; color: white;">{{$appoints->doctor}}</td>
-                <td style="padding:10px; color: white;">{{$appoints->date}}</td>
-                <td style="padding:10px; color: white;">{{$appoints->message}}</td>
-                <td style="padding:10px; color: white;">{{$appoints->status}}</td>
-                <td><a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete')" href="{{url('cancel_appoint',$appoints->id)}}">Cancel</a></td>
-                <td><a class="btn btn-primary" href="{{url('update_appoint',$appoints->id)}}">Update</a></td>
-            </tr>
-        @endforeach
-    </table>
-  </div>
-
-<script src="../assets/js/jquery-3.5.1.min.js"></script>
-
-<script src="../assets/js/bootstrap.bundle.min.js"></script>
-
-<script src="../assets/vendor/owl-carousel/js/owl.carousel.min.js"></script>
-
-<script src="../assets/vendor/wow/wow.min.js"></script>
-
-<script src="../assets/js/theme.js"></script>
-  
-</body>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    @include('admin.script')
+    <!-- End custom js for this page -->
+  </body>
 </html>

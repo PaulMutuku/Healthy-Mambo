@@ -24,14 +24,14 @@
             <div class="container-fluid page-body-wrapper">
                 
                 <div class="container" align="center" style="padding:100px">
-                    @if(session()->has('message'))
-                    <div class="alert alert-success">
-                        <button type="button" class="close" data-dismiss="alert">
-                            x
-                        </button>
-                        {{session()->get('message')}}
-                    </div>
-                    @endif
+                @if(session()->has('message'))
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert">
+                        x
+                    </button>
+                    {{session()->get('message')}}
+                </div>
+                @endif
                     <form action="{{url('editdoctor',$data->id)}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div style="padding:15px;">
